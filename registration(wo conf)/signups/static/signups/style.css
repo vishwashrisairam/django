@@ -1,0 +1,14 @@
+body{
+	background-color: pink;
+}
+h1{
+	color:blue;
+}
+.jumbotron{
+	background-color: #256983;
+}
+
+.success{
+	background-color: grey;
+	text-align: center;
+}

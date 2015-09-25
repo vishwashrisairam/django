@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home page</title>
+</head>
+<body>
+{%if user.is_authenticated%}
+<h1>Welcome {{user.username}} to my page </h1>
+<br>
+<a href="{%url 'logout'%}"><button type="button"> Sign out</button></a>
+{%else%}
+<h1>Welcome to my page </h1>
+{%endif%}
+
+
+<p>Please Sign in to your account <br>
+   <a href="{%url 'login'%}"><button type="button"> Sign in</button></a>
+   or <br>Sign up for a new account<br>   
+   <a href="{%url 'register'%}"><button type="button"> Sign up</button></a>
+</p>
+</body>
+</html>

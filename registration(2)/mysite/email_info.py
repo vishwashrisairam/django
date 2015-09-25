@@ -1,0 +1,5 @@
+EMAIL_USE_TLS=True
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='vishwashrisairam@gmail.com'
+EMAIL_HOST_PASSWORD='9409054975'
+EMAIL_PORT=587

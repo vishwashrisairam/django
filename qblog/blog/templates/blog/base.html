@@ -1,0 +1,73 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blog</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{% static "blog/bootstrap.min.css"%}">
+
+<!-- Optional theme -->
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="{% static "blog/bootstrap.min.js"%}"></script>
+</head>
+<body>
+
+<div class="blog-masthead">
+      <div class="container">
+        <nav class="navbar navbar-default ">
+        <ul class="nav navbar-nav">
+          <li><a class="blog-nav-item active" href="/">Home</a></li>
+          <li><a class="blog-nav-item" href="{%url "blog.views.new"%}">Write</a></li>
+          <li><a class="blog-nav-item" href="/feed/">Feeds</a></li>
+         
+          <li>
+          {%if user.is_authenticated%}
+          <a class="blog-nav-item" href="/accounts/logout">Logout</a></li>
+         
+          {%else%}
+          <li><a class="blog-nav-item" href="/accounts/login">Login</a></li>
+           <li><a class="blog-nav-item" href="/accounts/register">Sign Up</a></li>
+          {%endif%}
+          <li><a class="blog-nav-item" href="#">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header ">
+        <div class="jumbotron">
+        <h1 class="blog-title">The Bootstrap Blog</h1>
+        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+        </div>
+
+           {%block blog_entries%}
+      {%endblock%}
+
+      {% if is_paginated %}
+            <ul class="pager">
+              <li {% if not page_obj.has_previous %}class="disabled"{% endif %}><a {% if page_obj.has_previous %}href="?page={{ page_obj.previous_page_number }}"{% endif %}>Prev</a></li>
+              <li {% if not page_obj.has_next %}class="disabled"{% endif %}><a {% if page_obj.has_next %}href="?page={{ page_obj.next_page_number }}"{% endif %}>Next</a></li>
+            </ul>
+    {% endif %}
+      </div>
+
+   
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+</body>
+</html>

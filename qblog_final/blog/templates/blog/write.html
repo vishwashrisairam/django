@@ -1,0 +1,17 @@
+{%extends "blog/base.html"%}
+{% load crispy_forms_tags %}
+{%block blog_entries%}
+
+<h1>New Post</h1>
+<form method="POST" class="post-form">
+	{% csrf_token%}
+	
+	{{form|crispy}}
+	{%if user.is_authenticated%}
+	<button type="submit" class="save btn btn-default active">Save</button>
+	{%else%}
+	<button type="submit" class="save btn btn-default disabled">Save</button>
+	{%endif%}
+</form>
+
+{%endblock%}
